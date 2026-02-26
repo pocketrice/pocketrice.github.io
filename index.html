@@ -1,35 +1,144 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>solfleur \\ systems</title>
-    <link href="css/style.css" rel="stylesheet">
-  </head>
-  <body>
-<style>
-@font-face {
-  font-family: "04b03";
-  src: url(/assets/04b03.ttf);
-}
+<!doctype html>
+<html>
+    <head>
+        <title>pocky</title>
+        <meta charset="utf-8" />
+        <meta name="keywords" content="nothing, to, see, here" />
+        <meta http-equiv="Cache-Control" content="no-store" />
+        <script src="https://unpkg.com/webamp@1.4.0/built/webamp.bundle.min.js"></script>
 
-@font-face {
-  font-family: "Berkeley Mono";
-  src: url(/assets/berkeleymonotrial.otf);
-}
+        <style>
+            body {
+                background-color: #0f1515;
+                background-image: url("assets/dreary.jpg");
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
 
-* {
-font-family: "Berkeley Mono";
-}
+            div#greet {
+                position: absolute;
+                top: 70px;
+                right: 15%;
+                transform: rotate(-8deg);
+                color: #9b92c5;
+            }
 
-h2 {
-  font-family: "04b03" !important;
-}
+            #greet h2 {
+                font-family: "04b03";
+            }
 
-</style>
-<h2>solfleur.systems</h2>
-<hr>
-<br><br>
-hiya
-  </body>
+            #greet #temp {
+                font-family: "xkadct";
+            }
+
+            #incr {
+                position: absolute;
+                left: 20px;
+                bottom: 20px;
+            }
+
+            #winamp {
+                position: absolute;
+                top: 20px !important;
+                left: 20px;
+            }
+
+            @font-face {
+                font-family: "04b03";
+                src:
+                    local("04b03"),
+                    url("assets/04b03.ttf") format("truetype");
+            }
+
+            @font-face {
+                font-family: "xkadct";
+                src:
+                    local("xiaokeaidechuntian"),
+                    url("assets/xkadct.ttf") format("truetype");
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="winamp"></div>
+        <script>
+            const Winamp = window.Webamp;
+            // All configuration options are optional.
+            const webamp = new Webamp({
+                __initialWindowLayout: {
+                    main: { position: { x: 0, y: 0 } },
+                    playlist: { position: { x: 0, y: 116 }, size: [0, 1] },
+                },
+                enableDoubleSizeMode: true,
+                // Optional.
+                initialTracks: [
+                    {
+                        metaData: {
+                            artist: "sasakure.UK",
+                            title: "Atropos",
+                        },
+                        url: "assets/audio/atropos.mp3",
+                    },
+                    {
+                        metaData: {
+                            artist: "Yuki Kajiura",
+                            title: "Decretum",
+                        },
+                        url: "assets/audio/decretum.mp3",
+                    },
+                    {
+                        metaData: {
+                            artist: "Vinocio",
+                            title: "Horizonte",
+                        },
+                        url: "assets/audio/horizonte.mp3",
+                    },
+                    {
+                        metaData: {
+                            artist: "JoDu",
+                            title: "Neun",
+                        },
+                        url: "assets/audio/neun.mp3",
+                    },
+                    {
+                        metaData: {
+                            artist: "speedometer.",
+                            title: "Summer Haze",
+                        },
+                        url: "assets/audio/summer.mp3",
+                    },
+                    {
+                        metaData: {
+                            artist: "Maxodex",
+                            title: "Leaf Sunrays",
+                        },
+                        url: "assets/audio/sunrays.mp3",
+                    },
+                ],
+                initialSkin: {
+                    url: "assets/ultraviolet.wsz",
+                },
+            });
+
+            webamp.store.dispatch({
+                type: "CLOSE_WINDOW",
+                windowId: "equalizer",
+            });
+
+            webamp.renderWhenReady(document.getElementById("winamp"));
+        </script>
+
+        <div id="greet">
+            <h2><span id="temp">(〃'◇'〃)/</span></h2>
+        </div>
+        <iframe
+            id="incr"
+            src="//incr.easrng.net/badge?key=solfleur"
+            style="background: url(//incr.easrng.net/bg.gif)"
+            title="increment badge"
+            width="88"
+            height="31"
+            frameborder="0"
+        ></iframe>
+    </body>
 </html>
